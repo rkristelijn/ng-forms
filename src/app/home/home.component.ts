@@ -8,10 +8,17 @@ import { Employee } from '../models/employee.model';
 })
 export class HomeComponent implements OnInit {
   public languages: string[] = ["English", "Spanish", "Dutch", "Other"]; 
-  model = new Employee('Darla', 'Smith');
+  model = new Employee('Darla', 'Smith', true, "w2", "Dutch");
   constructor() { }
 
   ngOnInit() {
+  }
+
+  ToUpperCase(field: string, value: string) {
+    if (value.length > 0)
+      this.model[field] = value.charAt(0).toUpperCase() + value.slice(1);
+    else
+      this.model[field] = value;
   }
 
 }
