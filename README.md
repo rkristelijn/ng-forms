@@ -1,26 +1,24 @@
 # NgForms
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.4.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.4. It is for testing the course [Angular Forms](https://app.pluralsight.com/player?course=angular-2-forms&author=mark-zamoyta&name=angular-2-forms-m2&clip=2&mode=live) @ Pluralsight.
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `npm start` for a dev server. Navigate to `http://localhost:4200/`.
 
-## Code scaffolding
+## Steps to recreate the project from scratch:
+1. `ng new ng-forms --v 5 --routing` for creating a new project with Angular 5 and add routing
+1. `npm i bootstrap@next ngx-bootstrap --save` -- add bootstrap 4 and ngx-bootstrap
+1. update `package.json` for `start` script: `ng serve --host 0.0.0.0 --disable-host-check --live-reload false` to enable serving the network and disable live reload to flood the debug tab in the browser
+1. update `angular-cli.json`: add `"../node_modules/bootstrap/dist/css/bootstrap.min.css",` to `styles []`
+1. `npm start` to test (ok)
+1. `git init`
+1. creat new repo on github.com
+1. `git commit -a -m "initial commit"`
+1. `git remote add origin https://github.com/rkristelijn/ng-forms.git`
+1. `git push -u origin master`
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+From this we continue the course
 
 ## Further help
 
