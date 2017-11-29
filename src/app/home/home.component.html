@@ -5,11 +5,14 @@
 
     <div class="form-group">
       <label for="firstNameId">First Name</label>
-      <input id="firstNameId" type="text" class="form-control" required name="firstName" 
+      <input #firstName id="firstNameId" type="text" class="form-control" required name="firstName" 
       [ngModel]="model.firstName"
       (ngModelChange)="ToUpperCase('firstName', $event)">
     </div>
 
+    <h3>Classes</h3>
+    <h4>{{ firstName.className }}</h4>
+<!-- 
     <div class="form-group">
       <label for="lastNameId">Last Name</label>
       <input id="lastNameId" type="text" class="form-control" required name="lastName" 
@@ -55,7 +58,7 @@
     <div class="form-group">
       <label for="colorId">Boot color</label>
       <input id="colorId" type="color" class="form-control" required name="color" ngModel>
-    </div>
+    </div> -->
 
     <button class="btn btn-primary" type="submit">Ok</button>
   </form>
