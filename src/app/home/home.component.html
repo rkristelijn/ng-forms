@@ -10,13 +10,9 @@
       (ngModelChange)="ToUpperCase('firstName', $event)">
     </div>
 
-    <h3>Properties</h3>
-    <h4>invalid {{ firstName.invalid }}</h4>
-    <h4>valid {{ firstName.valid }}</h4>
-    <h4>untouched {{ firstName.untouched }}</h4>
-    <h4>touched {{ firstName.touched }}</h4>
-    <h4>pristine {{ firstName.pristine }}</h4>
-    <h4>dirty {{ firstName.dirty }}</h4>
+    <div *ngIf="firstName.invalid && firstName.touched" class="alert alert-danger">
+      First Name is required.
+    </div>
 <!-- 
     <div class="form-group">
       <label for="lastNameId">Last Name</label>
