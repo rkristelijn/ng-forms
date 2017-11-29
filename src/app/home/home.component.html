@@ -1,3 +1,55 @@
-<p>
-  home works!
-</p>
+<div class="container">
+  <h3>Angular 2 Forms</h3>
+
+  <form #form="ngForm" novalidate>
+
+    <div class="form-group">
+      <label for="firstNameId">First Name</label>
+      <input id="firstNameId" type="text" class="form-control" required name="firstName" ngModel>
+    </div>
+
+    <div class="form-group">
+      <label for="lastNameId">Last Name</label>
+      <input id="lastNameId" type="text" class="form-control" required name="lastName" ngModel>
+    </div>
+
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" name="isFullTime" ngModel> Full Time Employee
+      </label>
+    </div>
+
+    <label>Payment Type</label>
+    <div class="radio">
+      <label>
+        <input type="radio" name="payType" value="w2" checked> W2
+      </label>
+    </div>
+    <div class="radio">
+      <label>
+        <input type="radio" name="payType" value="1099"> 1099
+      </label>
+    </div>
+
+    <div class="form-group">
+      <label>Primary Language</label>
+      <select class="form-control">
+        <option *ngFor="let lang of languages">
+          {{ lang }}
+        </option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="dateHiredId">Date Hired</label>
+      <input id="dateHiredId" type="date" class="form-control" required name="dateHired" ngModel>
+    </div>
+
+    <div class="form-group">
+      <label for="colorId">Boot color</label>
+      <input id="colorId" type="color" class="form-control" required name="color" ngModel>
+    </div>
+    
+    <button class="btn btn-primary" type="submit">Ok</button>
+  </form>
+</div>

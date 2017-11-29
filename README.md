@@ -8,7 +8,7 @@ Run `npm start` for a dev server. Navigate to `http://localhost:4200/`.
 
 ## Steps to recreate the project from scratch:
 1. `ng new ng-forms --v 5 --routing` for creating a new project with Angular 5 and add routing
-1. `npm i bootstrap@next ngx-bootstrap --save` -- add bootstrap 4 and ngx-bootstrap
+1. `npm i bootstrap@next ngx-bootstrap --save` -- add bootstrap 4 and ngx-bootstrap [@see](https://github.com/angular/angular-cli/wiki/stories-include-bootstrap)
 1. update `package.json` for `start` script: `ng serve --host 0.0.0.0 --disable-host-check --live-reload false` to enable serving the network and disable live reload to flood the debug tab in the browser
 1. update `angular-cli.json`: add `"../node_modules/bootstrap/dist/css/bootstrap.min.css",` to `styles []`
 1. `npm start` to test (ok)
@@ -17,6 +17,16 @@ Run `npm start` for a dev server. Navigate to `http://localhost:4200/`.
 1. `git commit -a -m "initial commit"`
 1. `git remote add origin https://github.com/rkristelijn/ng-forms.git`
 1. `git push -u origin master`
+1. `ng g c github`, `ng g c home`, `ng g c about`
+1. in `app-routing.module.ts` add: 
+
+```javascript
+        { path: 'home', component: HomeComponent },
+        { path: 'github', component: GithubComponent },
+        { path: 'about', component: AboutComponent },
+        { path: '', redirectTo: 'home', pathMatch: 'full' },
+        { path: '**', redirectTo: 'home', pathMatch: 'full' }
+```
 
 From this we continue the course.
 
