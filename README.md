@@ -18,7 +18,12 @@ Run `npm start` for a dev server. Navigate to `http://localhost:4200/`.
 1. `git remote add origin https://github.com/rkristelijn/ng-forms.git`
 1. `git push -u origin master`
 
-From this we continue the course
+From this we continue the course.
+
+# Course
+
+## Form Basics in Angular 5 and bootstrap 4
+
 
 ## Further help
 
