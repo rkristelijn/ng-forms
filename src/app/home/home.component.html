@@ -1,19 +1,27 @@
 <div class="container">
-  <h3>Angular 2 Forms</h3>
+  <h3>Angular 5 Forms with Bootstrap 4</h3>
 
   <form #form="ngForm" novalidate>
 
     <div class="form-group">
-      <label for="firstNameId">First Name</label>
-      <input #firstName="ngModel" id="firstNameId" type="text" class="form-control" required name="firstName" 
+      <label class="control-label" for="firstNameId">First Name</label>
+      <input #firstName="ngModel" maxlength="3" minlength="3" pattern="^Q.*" id="firstNameId" type="text" class="form-control" 
+      required name="firstName" 
+      aria-describedby="firstNameHelpBlock"
       [ngModel]="model.firstName"
       (ngModelChange)="ToUpperCase('firstName', $event)">
+      <small id="firstNameHelpBlock" class="form-text text-muted">
+          You firstname should not be empty, be exact 3 characters and start with a Q.
+        </small>
+    </div>
+    <!--
+      for HTML5 validations: https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5/Constraint_validation
+      for regex patters: http://html5pattern.com/
+    
+    <div *ngIf="firstName.invalid && firstName.touched" class="alert alert-danger">
+        You firstname should not be empty, be exact 3 characters and start with a Q.
     </div>
 
-    <div *ngIf="firstName.invalid && firstName.touched" class="alert alert-danger">
-      First Name is required.
-    </div>
-<!-- 
     <div class="form-group">
       <label for="lastNameId">Last Name</label>
       <input id="lastNameId" type="text" class="form-control" required name="lastName" 
