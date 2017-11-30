@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Employee } from '../models/employee.model';
+import { NgForm } from '@angular/forms';
+import { FormPoster } from '../services/form-poster.service';
 
 @Component({
   selector: 'app-home',
@@ -8,11 +10,22 @@ import { Employee } from '../models/employee.model';
 })
 export class HomeComponent implements OnInit {
   public languages: string[] = ['English', 'Spanish', 'Dutch', 'Other'];
-  model = new Employee('Darla', 'Smith', true, 'w2', 'default');
+  model = new Employee('Que', 'Smith', true, 'w2', 'Dutch');
   hasPrimaryLanguageError: boolean = false;
-  constructor() { }
+  constructor(private formPoster: FormPoster) { }
 
   ngOnInit() {
+  }
+
+  submitForm(form: NgForm) {
+    console.log('form.value:', form.value);
+    console.log('this.model:', this.model);
+    //validate form
+    this.validatePrimaryLanguage(this.model.primaryLanguage);
+    if(this.hasPrimaryLanguageError)
+      return;
+
+    this.formPoster.postEmployeeForm(this.model);
   }
 
   ToUpperCase(field: string, value: string): void {

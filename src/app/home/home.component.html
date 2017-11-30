@@ -1,7 +1,7 @@
 <div class="container">
   <h3>Angular 5 Forms with Bootstrap 4</h3>
 
-  <form #form="ngForm" novalidate>
+  <form #form="ngForm" (submit)="submitForm(form)" novalidate>
 
     <div class="form-group">
       <label class="control-label" for="firstNameId"
@@ -21,7 +21,7 @@
     <!--
       for HTML5 validations: https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5/Constraint_validation
       for regex patters: http://html5pattern.com/
-
+    -->
     <div class="form-group">
       <label for="lastNameId">Last Name</label>
       <input id="lastNameId" type="text" class="form-control" required name="lastName" 
@@ -49,7 +49,6 @@
       </label>
     </div>
 
-    -->
     <div class="form-group">
       <label class="control-label" [class.text-danger]="hasPrimaryLanguageError">Primary Language</label>
       <select #primaryLanguage="ngModel" class="form-control" 
@@ -78,7 +77,16 @@
       <input id="colorId" type="color" class="form-control" required name="color" ngModel>
     </div> -->
 
-    <button class="btn btn-primary" type="submit">Ok</button>
+    <button class="btn btn-primary" type="submit"
+    [disabled]="form.invalid"
+    >Ok</button>
+
+    <h3>Form:</h3>
+    <ul>
+      <li>pristine: {{ form.pristine }}</li>
+      <li>valid: {{ form.valid }}</li>
+      <li>dirty: {{ form.dirty }}</li>
+    </ul>
   </form>
   <pre>
   Model: {{ model | json }} 
