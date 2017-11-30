@@ -4,23 +4,23 @@
   <form #form="ngForm" novalidate>
 
     <div class="form-group">
-      <label class="control-label" for="firstNameId">First Name</label>
-      <input #firstName="ngModel" maxlength="3" minlength="3" pattern="^Q.*" id="firstNameId" type="text" class="form-control" 
-      required name="firstName" 
-      aria-describedby="firstNameHelpBlock"
-      [ngModel]="model.firstName"
-      (ngModelChange)="ToUpperCase('firstName', $event)">
+      <label class="control-label" for="firstNameId"
+      [class.text-danger]="firstName.invalid && firstName.touched">First Name</label>
+      <input #firstName="ngModel" maxlength="3" minlength="3" pattern="^Q.*" id="firstNameId" 
+        type="text" class="form-control"
+        required name="firstName" aria-describedby="firstNameHelpBlock" 
+        [ngModel]="model.firstName" (ngModelChange)="ToUpperCase('firstName', $event)"
+        [class.is-invalid]="firstName.invalid && firstName.touched">
       <small id="firstNameHelpBlock" class="form-text text-muted">
-          You firstname should not be empty, be exact 3 characters and start with a Q.
-        </small>
+        You firstname should not be empty, be exact 3 characters and start with a Q.
+      </small>
+    </div>
+    <div *ngIf="firstName.invalid && firstName.touched" class="alert alert-danger">
+        You firstname should not be empty, be exact 3 characters and start with a Q.
     </div>
     <!--
       for HTML5 validations: https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5/Constraint_validation
       for regex patters: http://html5pattern.com/
-    
-    <div *ngIf="firstName.invalid && firstName.touched" class="alert alert-danger">
-        You firstname should not be empty, be exact 3 characters and start with a Q.
-    </div>
 
     <div class="form-group">
       <label for="lastNameId">Last Name</label>
@@ -49,16 +49,24 @@
       </label>
     </div>
 
+    -->
     <div class="form-group">
-      <label>Primary Language</label>
-      <select class="form-control" name="primaryLanguage"
-        [(ngModel)]="model.primaryLanguage">
+      <label class="control-label" [class.text-danger]="hasPrimaryLanguageError">Primary Language</label>
+      <select #primaryLanguage="ngModel" class="form-control" 
+      [class.is-invalid]="hasPrimaryLanguageError" name="primaryLanguage" 
+      (blur)="validatePrimaryLanguage($event)"
+      [(ngModel)]="model.primaryLanguage">
+        <option value="default">Select a language...</option>
         <option *ngFor="let lang of languages">
           {{ lang }}
         </option>
       </select>
+      <div *ngIf="primaryLanguage.touched && hasPrimaryLanguageError" class="alert alert-danger">
+          You should select a primary language.
+      </div>
     </div>
 
+    <!--
     <div class="form-group">
       <label for="dateHiredId">Date Hired</label>
       <input id="dateHiredId" type="date" class="form-control" required name="dateHired" ngModel>
