@@ -25,7 +25,11 @@ export class HomeComponent implements OnInit {
     if(this.hasPrimaryLanguageError)
       return;
 
-    this.formPoster.postEmployeeForm(this.model);
+    this.formPoster.postEmployeeForm(this.model)
+      .subscribe(
+        data => console.log('success: ', data),
+        err => console.log('error: ', err) 
+      );
   }
 
   ToUpperCase(field: string, value: string): void {

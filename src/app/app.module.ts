@@ -22,12 +22,12 @@ import { FormPoster } from './services/form-poster.service';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpModule,
+    AppRoutingModule
   ],
   providers: [
-    FormPoster,
-    HttpModule
+    FormPoster
   ],
   bootstrap: [AppComponent]
 })

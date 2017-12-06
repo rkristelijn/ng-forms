@@ -24,14 +24,19 @@ function processForm(req, res) {
             'content-type': 'text/plain'
         });
         
-        res.end(util.inspect({
+        fields.id = "ABC123";
+
+        var data = JSON.stringify({
             fields: fields
-        }));
+        });
+
+        // res.end(util.inspect({
+        //     fields: fields
+        // }));
+        res.end(data);
 
         console.log('posted fields:\n');
-        console.log(util.inspect({
-            fields: fields
-        }));
+        console.log(data);
     });
 }
 
