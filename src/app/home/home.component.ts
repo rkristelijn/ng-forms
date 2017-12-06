@@ -15,6 +15,13 @@ export class HomeComponent implements OnInit {
   constructor(private formPoster: FormPoster) { }
 
   ngOnInit() {
+    this.formPoster.getLanguages().subscribe(
+      data => {
+        console.log('data:', data);
+        this.languages = data.data.languages
+      },
+      err => console.log('get error: ', err)
+    );
   }
 
   submitForm(form: NgForm) {

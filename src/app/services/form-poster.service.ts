@@ -16,9 +16,12 @@ const httpOptions = {
 export class FormPoster {
     constructor(private http: Http) { }
 
+    private handleError(error: Response) {
+        console.log('handleError', error);
+    }
     postEmployeeForm(employee: Employee): Observable<any> {
         console.log('posting employee: ', employee);
-        let url = 'http://192.168.0.7:3100/postemployee';
+        let url = 'http://192.168.0.7:3100/post-employee';
         let body = JSON.stringify(employee);
 
         return this.http.post(url, body, httpOptions)
@@ -26,7 +29,10 @@ export class FormPoster {
             .do(data => JSON.stringify(data))
     }
 
-    private handleError(error: Response) {
-        console.log('handleError', error);
+    getLanguages(): Observable<any> {
+        let url = 'http://192.168.0.7:3100/get-languages';
+        return this.http.get(url)
+            .map((response: Response) => response.json())
+            .do(data => JSON.stringify(data))
     }
 }
