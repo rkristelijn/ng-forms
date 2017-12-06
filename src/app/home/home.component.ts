@@ -9,7 +9,7 @@ import { FormPoster } from '../services/form-poster.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  public languages: string[] = ['English', 'Spanish', 'Dutch', 'Other'];
+  public languages: string[] = [];
   model = new Employee('Que', 'Smith', true, 'w2', 'Dutch');
   hasPrimaryLanguageError: boolean = false;
   constructor(private formPoster: FormPoster) { }

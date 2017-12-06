@@ -4,6 +4,7 @@ import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/delay';
 
 import { Observable } from 'rxjs/Observable';
 import { Employee } from '../models/employee.model';
@@ -32,6 +33,7 @@ export class FormPoster {
     getLanguages(): Observable<any> {
         let url = 'http://192.168.0.7:3100/get-languages';
         return this.http.get(url)
+            .delay(5000)
             .map((response: Response) => response.json())
             .do(data => JSON.stringify(data))
     }
